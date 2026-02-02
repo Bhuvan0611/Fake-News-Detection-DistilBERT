@@ -121,7 +121,7 @@ Available inside `/artifacts`:
 GitHub does not allow large model files.  
 Download the trained model here:
 
-👉 **[Download Model](PASTE_DRIVE_LINK_HERE)](https://drive.google.com/drive/folders/1-DqrQWzvIlYnIyOK5iYNmTe7qXVrZBcD?usp=drive_link)**
+👉 **(PASTE_DRIVE_LINK_HERE)](https://drive.google.com/drive/folders/1-DqrQWzvIlYnIyOK5iYNmTe7qXVrZBcD?usp=drive_link)**
 
 Place inside:
 
@@ -163,11 +163,11 @@ README.md
 
 ## 🚀 Highlights
 
-✔️ Cross-domain fake news detection
-✔️ Transformer-based NLP model
-✔️ Robustness & calibration analysis
-✔️ Research-grade evaluation pipeline
-✔️ Fully reproducible in one notebook
+-✔️ Cross-domain fake news detection
+-✔️ Transformer-based NLP model
+-✔️ Robustness & calibration analysis
+-✔️ Research-grade evaluation pipeline
+-✔️ Fully reproducible in one notebook
 
 ```
 
