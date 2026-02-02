@@ -1,102 +1,174 @@
-title: "Cross-Domain Fake News Detection using DistilBERT"
 
-overview:
-  description: >
-    A research-grade Machine Learning project that builds a robust Fake News
-    Detection system using a fine-tuned DistilBERT transformer model trained
-    across multiple domains of news data and evaluated with advanced robustness
-    and calibration metrics.
-  objective: >
-    Demonstrate cross-domain generalization of a transformer-based NLP model
-    across very different writing styles of news content.
+# 📰 Cross-Domain Fake News Detection using DistilBERT
 
-datasets:
-  - name: "ISOT Fake News"
-    domain: "News articles"
-    style: "Long formal journalism"
-  - name: "GossipCop"
-    domain: "Celebrity headlines"
-    style: "Short sensational headlines"
-  - name: "LIAR Dataset"
-    domain: "Political statements"
-    style: "Medium-length factual claims"
-  format:
-    columns: ["text", "label"]
-    label_mapping:
-      0: "Fake"
-      1: "Real"
-  total_samples: "~80,000"
+```
 
-methodology:
-  steps:
-    - "Merge multi-domain datasets into a unified dataset"
-    - "Tokenize text using DistilBERT tokenizer (max length = 192)"
-    - "Fine-tune DistilBERT for binary classification"
-    - "Perform train/validation split (90/10)"
-    - "Evaluate on unseen validation data"
-    - "Perform domain-wise robustness analysis"
-    - "Compute advanced evaluation metrics"
-    - "Generate ROC curve and Confusion Matrix"
+╔══════════════════════════════════════════════════════════════╗
+║   Robust Fake News Detection across multiple writing styles ║
+║   using a fine-tuned DistilBERT Transformer model          ║
+╚══════════════════════════════════════════════════════════════╝
 
-model:
-  base_model: "distilbert-base-uncased"
-  architecture:
-    layers: 6
-    parameters: "66M"
-    head: "Binary classification (Fake vs Real)"
+```
 
-evaluation_metrics:
-  - "Accuracy"
-  - "Macro F1 Score"
-  - "Balanced Accuracy"
-  - "AUROC"
-  - "Expected Calibration Error (ECE)"
-  - "Brier Score"
-  - "Overconfidence"
-  - "Domain-wise performance"
+---
 
-results:
-  validation:
-    accuracy: "~90%"
-    macro_f1: "~0.90"
-    auroc: "~0.97"
-    balanced_accuracy: "~0.90"
-  domain_wise:
-    - domain: "ISOT (News Articles)"
-      accuracy: "~99%"
-    - domain: "LIAR (Political Statements)"
-      accuracy: "~92%"
-    - domain: "GossipCop (Headlines)"
-      accuracy: "~80%"
+## 🎯 Objective
 
-artifacts:
-  folder: "artifacts/"
-  files:
-    - "roc_curve.png"
-    - "confusion_matrix.png"
-    - "summary.json"
+Most fake-news models work only on the dataset they were trained on.  
+This project demonstrates **cross-domain generalization** — the ability of a transformer model to detect fake news across **very different writing styles**.
 
-trained_model:
-  storage: "Google Drive"
-  download_link: ["PASTE_DRIVE_LINK_HERE"](https://drive.google.com/drive/folders/1-DqrQWzvIlYnIyOK5iYNmTe7qXVrZBcD?usp=drive_link)
-  placement: "model/distilbert_fake_news_model/"
+---
 
-usage_example:
-  code: |
-    from transformers import DistilBertTokenizerFast, DistilBertForSequenceClassification
+## 🗂️ Datasets Used
 
-    tokenizer = DistilBertTokenizerFast.from_pretrained("model/distilbert_fake_news_model")
-    model = DistilBertForSequenceClassification.from_pretrained("model/distilbert_fake_news_model")
+| Dataset | Domain | Writing Style |
+|---------|--------|----------------|
+| **ISOT Fake News** | News articles | Long formal journalism |
+| **GossipCop** | Celebrity headlines | Short sensational headlines |
+| **LIAR Dataset** | Political statements | Medium factual claims |
 
-repository_structure:
-  - "notebook/ : Colab notebook with full pipeline"
-  - "artifacts/ : Evaluation plots and metrics"
-  - "model/ : Place downloaded model here"
-  - "README.md"
+All datasets were merged and standardized into:
 
-highlights:
-  - "Cross-domain fake news detection"
-  - "Transformer-based NLP model"
-  - "Robustness and calibration analysis"
-  - "Research-grade evaluation pipeline"
-  - "Fully reproducible in a single notebook"
+```
+
+text | label
+0 = Fake
+1 = Real
+
+```
+
+Total samples ≈ **80,000**
+
+---
+
+## 🧠 Methodology
+
+```
+
+Merge Datasets → Tokenize → Fine-Tune DistilBERT → Validate →
+Domain Analysis → Calibration Metrics → Visual Artifacts
+
+```
+
+### Steps
+
+1. Merge multi-domain datasets
+2. Tokenize with DistilBERT (max length = 192)
+3. Fine-tune for binary classification
+4. Train/Validation split (90/10)
+5. Domain-wise robustness testing
+6. Advanced evaluation metrics
+
+---
+
+## ⚙️ Model Architecture
+
+| Property | Value |
+|----------|-------|
+| Base Model | `distilbert-base-uncased` |
+| Transformer Layers | 6 |
+| Parameters | 66M |
+| Output | Fake vs Real |
+
+---
+
+## 📊 Evaluation Metrics
+
+- Accuracy
+- Macro F1 Score
+- Balanced Accuracy
+- AUROC
+- Expected Calibration Error (ECE)
+- Brier Score
+- Overconfidence
+- Domain-wise analysis
+
+---
+
+## 📈 Results (Validation)
+
+| Metric | Value |
+|-------|-------|
+| Accuracy | ~90% |
+| Macro F1 | ~0.90 |
+| AUROC | ~0.97 |
+| Balanced Accuracy | ~0.90 |
+
+### 🌍 Domain-wise Performance
+
+| Domain | Accuracy |
+|--------|----------|
+| ISOT (News Articles) | ~99% |
+| LIAR (Political Statements) | ~92% |
+| GossipCop (Headlines) | ~80% |
+
+✔️ Demonstrates strong cross-domain robustness.
+
+---
+
+## 🖼️ Artifacts
+
+Available inside `/artifacts`:
+
+- ROC Curve
+- Confusion Matrix
+- Summary metrics JSON
+
+---
+
+## 🤖 Trained Model Weights
+
+GitHub does not allow large model files.  
+Download the trained model here:
+
+👉 **[Download Model](PASTE_DRIVE_LINK_HERE)](https://drive.google.com/drive/folders/1-DqrQWzvIlYnIyOK5iYNmTe7qXVrZBcD?usp=drive_link)**
+
+Place inside:
+
+```
+
+model/distilbert_fake_news_model/
+
+````
+
+---
+
+## ▶️ How to Use the Model
+
+```python
+from transformers import DistilBertTokenizerFast, DistilBertForSequenceClassification
+
+tokenizer = DistilBertTokenizerFast.from_pretrained("model/distilbert_fake_news_model")
+model = DistilBertForSequenceClassification.from_pretrained("model/distilbert_fake_news_model")
+
+text = "Breaking news headline here"
+inputs = tokenizer(text, return_tensors="pt", truncation=True, padding=True)
+prediction = model(**inputs).logits.argmax(dim=1).item()
+
+print("Fake" if prediction == 0 else "Real")
+````
+
+---
+
+## 📁 Repository Structure
+
+```
+notebook/      → Full Colab pipeline
+artifacts/     → Evaluation plots and metrics
+model/         → Place downloaded model here
+README.md
+```
+
+---
+
+## 🚀 Highlights
+
+✔️ Cross-domain fake news detection
+✔️ Transformer-based NLP model
+✔️ Robustness & calibration analysis
+✔️ Research-grade evaluation pipeline
+✔️ Fully reproducible in one notebook
+
+```
+
+
